@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:service_app_ui/core/constants/app_colors.dart';
 
 class AnimatedToggleButton extends StatefulWidget {
   final List<String> values;
@@ -23,10 +24,10 @@ class AnimatedToggleButton extends StatefulWidget {
     super.key,
     required this.values,
     required this.onToggle,
-    this.backgroundColor = const Color.fromRGBO(255, 255, 255, 1.0),
-    this.buttonColor = const Color.fromRGBO(142, 39, 143, 1.0),
-    this.height = 50.0,
-    this.width = 100.0,
+    this.backgroundColor = AppColors.lightGrey,
+    this.buttonColor = AppColors.white,
+    this.height = 38.0,
+    this.width = double.infinity - 32.0,
     this.animationDuration = const Duration(milliseconds: 200),
     this.animationCurve = Curves.easeInOut,
     this.initialIndex = 0,
@@ -74,15 +75,6 @@ class _AnimatedToggleButtonState extends State<AnimatedToggleButton>
           decoration: BoxDecoration(
             color: widget.backgroundColor,
             borderRadius: BorderRadius.circular(8.0),
-            boxShadow: 
-                [
-                  BoxShadow(
-                    color: Colors.black.withAlpha((0.1 * 255).toInt()),
-                    spreadRadius: 1,
-                    blurRadius: 4,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
           ),
           child: Stack(
             children: [
@@ -99,14 +91,6 @@ class _AnimatedToggleButtonState extends State<AnimatedToggleButton>
                     borderRadius: BorderRadius.circular(
                       8.0 - widget.padding.horizontal / 2,
                     ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withAlpha((0.1 * 255).toInt()),
-                        spreadRadius: 1,
-                        blurRadius: 3,
-                        offset: const Offset(0, 1),
-                      ),
-                    ],
                   ),
                 ),
               ),
@@ -169,7 +153,7 @@ class _AnimatedToggleButtonState extends State<AnimatedToggleButton>
             fontSize: 10,
             fontWeight: FontWeight.w700,
             fontFamily: 'Inter',
-            color: Color.fromRGBO(255, 255, 255, 1));
+            color: Color.fromRGBO(0, 0, 0, 1.0));
 
     // Use AnimatedBuilder for smooth transitions of all style properties
     return AnimatedBuilder(
