@@ -14,10 +14,10 @@ class DoubleOptionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
+      height: 45,
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.white, width: 2),
-        borderRadius: BorderRadius.circular(4),
+        border: Border.all(color: Colors.white, width: 0.5),
+        borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
         children: [
@@ -35,7 +35,7 @@ class DoubleOptionButton extends StatelessWidget {
             ),
           ),
 
-          Container(width: 2, height: double.infinity, color: Colors.white),
+          Container(width: 0.5, height: double.infinity, color: Colors.white),
 
           Expanded(
             child: Center(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:service_app_ui/core/constants/app_colors.dart';
 import 'package:service_app_ui/core/helpers/white_status_bar.dart';
+import 'package:service_app_ui/core/routes/app_routes.dart';
 import 'package:service_app_ui/features/widgets/double_option_button.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -70,7 +71,7 @@ class _SplashScreenState extends State<SplashScreen>
                 width: 80,
                 height: 80,
                 colorFilter: const ColorFilter.mode(
-                  Colors.white,
+                  AppColors.white,
                   BlendMode.srcIn,
                 ),
               ),
@@ -97,7 +98,6 @@ class _SplashScreenState extends State<SplashScreen>
                             color: AppColors.white,
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
-                            fontStyle: FontStyle.normal,
                           ),
                         ),
 
@@ -123,11 +123,13 @@ class _SplashScreenState extends State<SplashScreen>
                                 style: const TextStyle(
                                   color: AppColors.white,
                                   fontWeight: FontWeight.w600,
-                                  fontStyle: FontStyle.normal,
                                 ),
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {
-                                    // Navigate to Login screen
+                                    Navigator.pushReplacementNamed(
+                                      context,
+                                      AppRoutes.login,
+                                    );
                                   },
                               ),
                             ],
