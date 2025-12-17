@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:service_app_ui/features/splash/splash_screen.dart';
+import 'package:service_app_ui/features/presentation/splash/splash_screen.dart';
 
 class AppRoutes {
   // Route Names
