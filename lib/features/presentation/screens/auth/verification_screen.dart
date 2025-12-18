@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:service_app_ui/core/constants/app_colors.dart';
+import 'package:service_app_ui/core/routes/app_routes.dart';
 import 'package:service_app_ui/features/presentation/widgets/custom_button.dart';
 import 'package:service_app_ui/features/presentation/widgets/custom_text_field.dart';
 import 'package:service_app_ui/features/presentation/widgets/otp_input_widget.dart';
@@ -106,7 +107,12 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     const SizedBox(height: 32),
                     CustomButton(
                       text: 'Submit',
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(
+                          context,
+                          AppRoutes.createJob,
+                        );
+                      },
                       gradient: const LinearGradient(
                         colors: [
                           AppColors.primaryBlue,

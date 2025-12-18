@@ -39,6 +39,7 @@ class _LoginWidgetState extends State<LoginWidget> {
         const SizedBox(height: 16),
         CustomTextField(
           label: 'Password',
+          labelColor: AppColors.darkGrey,
           hint: 'Enter your password',
           type: TextFieldType.password,
           obscureText: isPasswordHidden,
