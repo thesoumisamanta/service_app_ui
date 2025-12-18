@@ -1,5 +1,5 @@
 const List<Map<String, String>> serviceList = [
-  {'title': 'Plaing', 'image': 'assets/images/plaing.jpg'},
+  {'title': 'Paving', 'image': 'assets/images/paving.jpg'},
   {'title': 'Sealcoating', 'image': 'assets/images/sealcoating.jpg'},
   {'title': 'Cold Planning', 'image': 'assets/images/cold_planning.jpg'},
   {'title': 'Asphalt Repair', 'image': 'assets/images/asphalt_repair.jpg'},

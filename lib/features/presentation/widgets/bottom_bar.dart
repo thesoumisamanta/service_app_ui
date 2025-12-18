@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:service_app_ui/core/constants/app_colors.dart';
 import 'package:service_app_ui/core/constants/app_styles.dart';
 
 class BottomBar extends StatelessWidget {

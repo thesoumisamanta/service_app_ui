@@ -1,6 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:service_app_ui/core/constants/app_colors.dart';
 import 'package:service_app_ui/core/constants/app_styles.dart';
 import 'package:service_app_ui/core/helpers/white_status_bar.dart';

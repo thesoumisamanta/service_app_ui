@@ -73,7 +73,6 @@ class _AnimatedToggleButtonState extends State<AnimatedToggleButton>
           ),
           child: Stack(
             children: [
-              // Animated Selection Indicator
               AnimatedAlign(
                 alignment: _getAlignment(),
                 duration: widget.animationDuration,
@@ -89,7 +88,6 @@ class _AnimatedToggleButtonState extends State<AnimatedToggleButton>
                   ),
                 ),
               ),
-              // Toggle Button Options
               Row(
                 children: List.generate(
                   widget.values.length,
@@ -114,7 +112,6 @@ class _AnimatedToggleButtonState extends State<AnimatedToggleButton>
   Widget _buildOptionContent(int index) {
     final isSelected = _currentIndex == index;
 
-    // Ensure we have an animation controller for this index
     if (!_animationControllers.containsKey(index)) {
       _animationControllers[index] = AnimationController(
         duration: widget.animationDuration,
@@ -123,20 +120,16 @@ class _AnimatedToggleButtonState extends State<AnimatedToggleButton>
       );
     }
 
-    // Get controller for this index
     final controller = _animationControllers[index]!;
 
-    // Update animation target based on selection state
     if (isSelected && controller.value < 1.0) {
       controller.animateTo(1.0, curve: widget.animationCurve);
     } else if (!isSelected && controller.value > 0.0) {
       controller.animateTo(0.0, curve: widget.animationCurve);
     }
 
-    // The content to display
     final String content = widget.values[index];
 
-    // Get base styles
     final TextStyle normalStyle =
         widget.textStyle ??
         const TextStyle(
@@ -154,15 +147,13 @@ class _AnimatedToggleButtonState extends State<AnimatedToggleButton>
           color: AppColors.grey5,
         );
 
-    // Use AnimatedBuilder for smooth transitions of all style properties
     return AnimatedBuilder(
       animation: controller,
       builder: (context, child) {
-        // Interpolate font weight (can't directly lerp FontWeight)
         final int normalWeightIndex =
-            normalStyle.fontWeight?.index ?? 3; // w400 = normal
+            normalStyle.fontWeight?.index ?? 3; 
         final int selectedWeightIndex =
-            selectedStyle.fontWeight?.index ?? 6; // w700 = bold
+            selectedStyle.fontWeight?.index ?? 6; 
         final int weightIndex =
             (normalWeightIndex +
                     ((selectedWeightIndex - normalWeightIndex) *
@@ -171,27 +162,23 @@ class _AnimatedToggleButtonState extends State<AnimatedToggleButton>
                 .clamp(0, FontWeight.values.length - 1);
         final FontWeight fontWeight = FontWeight.values[weightIndex];
 
-        // Interpolate font size
         final double normalSize = normalStyle.fontSize ?? 14.0;
         final double selectedSize = selectedStyle.fontSize ?? 14.0;
         final double fontSize =
             normalSize + (selectedSize - normalSize) * controller.value;
 
-        // Interpolate color
         final Color color = Color.lerp(
           normalStyle.color,
           selectedStyle.color,
           controller.value,
         )!;
 
-        // Interpolate letter spacing if defined
         final double normalSpacing = normalStyle.letterSpacing ?? 0.0;
         final double selectedSpacing = selectedStyle.letterSpacing ?? 0.0;
         final double letterSpacing =
             normalSpacing +
             (selectedSpacing - normalSpacing) * controller.value;
 
-        // Create interpolated text style with all animated properties
         final TextStyle interpolatedStyle = TextStyle(
           fontSize: fontSize,
           fontWeight: fontWeight,
@@ -208,7 +195,6 @@ class _AnimatedToggleButtonState extends State<AnimatedToggleButton>
     );
   }
 
-  // Helper method to build content with or without icon
   Widget _buildContent(String content, IconData? iconData, TextStyle style) {
     if (iconData != null) {
       return Row(
@@ -228,17 +214,11 @@ class _AnimatedToggleButtonState extends State<AnimatedToggleButton>
     final count = widget.values.length;
     final step = 2 / (count - 1);
 
-    // For 2 items: -1 and 1
-    // For 3 items: -1, 0, 1
-    // For 4 items: -1, -0.33, 0.33, 1
-    // And so on...
-
     double x = -1 + (_currentIndex * step);
     return Alignment(x, 0);
   }
 
   double _getButtonWidth() {
-    // Width of a single button accounting for padding
     return (widget.width / widget.values.length) -
         widget.padding.horizontal / 2;
   }

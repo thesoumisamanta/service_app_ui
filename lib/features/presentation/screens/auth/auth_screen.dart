@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:service_app_ui/core/constants/app_colors.dart';
 import 'package:service_app_ui/core/helpers/white_status_bar.dart';
 import 'package:service_app_ui/features/presentation/screens/auth/widgets/login_widget.dart';

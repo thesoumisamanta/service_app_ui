@@ -26,7 +26,6 @@ class _SignupWidgetState extends State<SignupWidget> {
           hint: 'Enter your name',
           height: 45,
           type: TextFieldType.name,
-          // controller: _nameController,
         ),
         const SizedBox(height: 12),
         CustomTextField(
@@ -50,7 +49,6 @@ class _SignupWidgetState extends State<SignupWidget> {
           hint: 'Enter your phone number',
           height: 45,
           type: TextFieldType.phone,
-          // controller: _phoneController,
         ),
         const SizedBox(height: 12),
         CustomTextField(
