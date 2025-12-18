@@ -91,12 +91,17 @@ class _LoginWidgetState extends State<LoginWidget> {
               fontSize: 14,
             ),
             const Spacer(),
-            Text(
-              'Forgot Password?',
-              style: TextStyle(
-                color: AppColors.primaryBlue.withValues(alpha: 0.9),
-                fontWeight: FontWeight.w600,
-                fontSize: 14,
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, '/verification');
+              },
+              child: Text(
+                'Forgot Password?',
+                style: TextStyle(
+                  color: AppColors.primaryBlue.withValues(alpha: 0.9),
+                  fontWeight: FontWeight.w600,
+                  fontSize: 14,
+                ),
               ),
             ),
           ],
