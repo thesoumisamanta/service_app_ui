@@ -69,6 +69,10 @@ assets/
 
 ## Getting Started
 
+# Flutter version
+flutter --version
+Flutter 3.38.5 • channel stable
+
 ```bash
 # Install dependencies
 flutter pub get
