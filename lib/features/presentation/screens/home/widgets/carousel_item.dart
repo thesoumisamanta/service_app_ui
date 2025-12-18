@@ -25,7 +25,7 @@ class CarouselItem extends StatelessWidget {
                   'Sealcoating Services',
                   style: TextStyle(
                     color: AppColors.primaryBlue,
-                    fontSize: 18,
+                    fontSize: 20,
                     fontWeight: FontWeight.w600,
                   ),
                   maxLines: 2,
@@ -39,19 +39,19 @@ class CarouselItem extends StatelessWidget {
                         'Rs. 699',
                         style: TextStyle(
                           color: AppColors.primaryBlue,
-                          fontSize: 16,
+                          fontSize: 18,
                           fontWeight: FontWeight.w500,
                           decoration: TextDecoration.lineThrough,
                           decorationColor: AppColors.primaryPurple,
                         ),
                       ),
-                      SizedBox(width: 10),
+                      SizedBox(width: 25),
                       Flexible(
                         child: Text(
                           'Rs. 299/year only',
                           style: TextStyle(
                             color: Color(0xFF3865E0),
-                            fontSize: 14,
+                            fontSize: 16,
                             fontWeight: FontWeight.w400,
                           ),
                           maxLines: 1,

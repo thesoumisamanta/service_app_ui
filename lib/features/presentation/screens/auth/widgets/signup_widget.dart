@@ -69,8 +69,8 @@ class _SignupWidgetState extends State<SignupWidget> {
               padding: const EdgeInsets.all(14.0),
               child: SvgPicture.asset(
                 isPasswordHidden
-                    ? 'assets/icons/eye.svg'
-                    : 'assets/icons/eye_off.svg',
+                    ? 'assets/icons/eye_off.svg'
+                    : 'assets/icons/eye.svg',
                 colorFilter: const ColorFilter.mode(
                   AppColors.grey2,
                   BlendMode.srcIn,
@@ -105,8 +105,8 @@ class _SignupWidgetState extends State<SignupWidget> {
               padding: const EdgeInsets.all(14.0),
               child: SvgPicture.asset(
                 isPasswordHidden
-                    ? 'assets/icons/eye.svg'
-                    : 'assets/icons/eye_off.svg',
+                    ? 'assets/icons/eye_off.svg'
+                    : 'assets/icons/eye.svg',
                 colorFilter: const ColorFilter.mode(
                   AppColors.grey2,
                   BlendMode.srcIn,
@@ -137,7 +137,7 @@ class _SignupWidgetState extends State<SignupWidget> {
             },
             text: 'Terms & Conditions',
             textColor: AppColors.primaryBlue,
-            fontSize: 12,
+            fontSize: 14,
             fontWeight: FontWeight.w600,
           ),
         ),

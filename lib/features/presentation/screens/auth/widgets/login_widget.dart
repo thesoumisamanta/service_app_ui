@@ -26,6 +26,7 @@ class _LoginWidgetState extends State<LoginWidget> {
         CustomTextField(
           label: 'Email',
           hint: 'Enter your email',
+          labelColor: AppColors.grey6,
           height: 45,
           type: TextFieldType.name,
           validator: (value) {
@@ -41,7 +42,7 @@ class _LoginWidgetState extends State<LoginWidget> {
         const SizedBox(height: 16),
         CustomTextField(
           label: 'Password',
-          labelColor: AppColors.darkGrey,
+          labelColor: AppColors.grey6,
           hint: 'Enter your password',
           height: 50,
           type: TextFieldType.password,
@@ -87,6 +88,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 });
               },
               text: 'Remember Me',
+              fontSize: 14,
             ),
             const Spacer(),
             Text(
@@ -94,7 +96,7 @@ class _LoginWidgetState extends State<LoginWidget> {
               style: TextStyle(
                 color: AppColors.primaryBlue.withValues(alpha: 0.9),
                 fontWeight: FontWeight.w600,
-                fontSize: 12,
+                fontSize: 14,
               ),
             ),
           ],

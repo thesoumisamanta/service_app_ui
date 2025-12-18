@@ -123,7 +123,7 @@ class _OtpInputWidgetState extends State<OtpInputWidget> {
                         ),
                         decoration: InputDecoration(
                           counterText: '',
-                          contentPadding: EdgeInsets.symmetric(vertical: 16),
+                          contentPadding: EdgeInsets.symmetric(vertical: 20),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(widget.borderRadius),
                             borderSide: BorderSide(
