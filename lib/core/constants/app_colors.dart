@@ -14,6 +14,8 @@ class AppColors {
   static const Color grey4 = Color(0xFFA7A799);
   static const Color black = Color(0xFF000000);
   static const Color darkText = Color(0xFF3D0017);
+  static const Color lightText = Color(0xFF9E6279);
+  static const Color orange = Color(0xFFFF5B5B);
 
   static LinearGradient splashOverlayGradient = LinearGradient(
     begin: Alignment.topCenter,

@@ -97,7 +97,6 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     OtpInputWidget(
                       length: 4,
                       onCompleted: (otp) {},
-                      boxSize: 60.0,
                       spacing: 16.0,
                       borderColor: Colors.grey.shade300,
                       focusedBorderColor: Colors.blue,

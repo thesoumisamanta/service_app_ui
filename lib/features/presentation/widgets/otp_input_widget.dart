@@ -5,7 +5,6 @@ import 'package:service_app_ui/core/constants/app_colors.dart';
 class OtpInputWidget extends StatefulWidget {
   final int length;
   final Function(String) onCompleted;
-  final double boxSize;
   final double spacing;
   final Color borderColor;
   final Color focusedBorderColor;
@@ -16,7 +15,6 @@ class OtpInputWidget extends StatefulWidget {
     super.key,
     this.length = 4,
     required this.onCompleted,
-    this.boxSize = 60.0,
     this.spacing = 16.0,
     this.borderColor = AppColors.grey2,
     this.focusedBorderColor = AppColors.primaryBlue,
@@ -66,7 +64,6 @@ class _OtpInputWidgetState extends State<OtpInputWidget> {
         _focusNodes[index].unfocus();
       }
 
-      // Check if all fields are filled
       String otp = _controllers.map((c) => c.text).join();
       if (otp.length == widget.length) {
         widget.onCompleted(otp);
@@ -98,59 +95,55 @@ class _OtpInputWidgetState extends State<OtpInputWidget> {
           ),
         ),
         const SizedBox(height: 12),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: List.generate(
-            widget.length,
-            (index) => Padding(
-              padding: EdgeInsets.only(
-                right: index < widget.length - 1 ? widget.spacing : 0,
-              ),
-              child: SizedBox(
-                width: widget.boxSize,
-                height: widget.boxSize,
-                child: KeyboardListener(
-                  focusNode: _keyboardFocusNodes[index],
-                  onKeyEvent: (event) => _onKeyEvent(event, index),
-                  child: TextField(
-                    controller: _controllers[index],
-                    focusNode: _focusNodes[index], 
-                    textAlign: TextAlign.center,
-                    keyboardType: TextInputType.number,
-                    maxLength: 1,
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.darkGrey,
-                    ),
-                    decoration: InputDecoration(
-                      counterText: '',
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(
-                          widget.borderRadius,
+        LayoutBuilder(
+          builder: (context, constraints) {
+            final double boxSize = (constraints.maxWidth - (widget.spacing * (widget.length - 1))) / widget.length;
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: List.generate(
+                widget.length,
+                (index) => SizedBox(
+                  width: boxSize,
+                  child: KeyboardListener(
+                    focusNode: _keyboardFocusNodes[index],
+                    onKeyEvent: (event) => _onKeyEvent(event, index),
+                    child: TextField(
+                      controller: _controllers[index],
+                      focusNode: _focusNodes[index],
+                      textAlign: TextAlign.center,
+                      keyboardType: TextInputType.number,
+                      maxLength: 1,
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: AppColors.darkGrey,
+                      ),
+                      decoration: InputDecoration(
+                        counterText: '',
+                        contentPadding: EdgeInsets.zero,
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(widget.borderRadius),
+                          borderSide: BorderSide(
+                            color: widget.borderColor,
+                            width: widget.borderWidth,
+                          ),
                         ),
-                        borderSide: BorderSide(
-                          color: widget.borderColor,
-                          width: widget.borderWidth,
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(widget.borderRadius),
+                          borderSide: BorderSide(
+                            color: widget.focusedBorderColor,
+                            width: widget.borderWidth,
+                          ),
                         ),
                       ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(
-                          widget.borderRadius,
-                        ),
-                        borderSide: BorderSide(
-                          color: widget.focusedBorderColor,
-                          width: widget.borderWidth,
-                        ),
-                      ),
+                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                      onChanged: (value) => _onChanged(value, index),
                     ),
-                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                    onChanged: (value) => _onChanged(value, index),
                   ),
                 ),
               ),
-            ),
-          ),
+            );
+          },
         ),
       ],
     );

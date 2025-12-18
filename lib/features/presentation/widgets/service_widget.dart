@@ -25,13 +25,18 @@ class ServiceWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          SvgPicture.asset(
-            'assets/icons/back_arrow.svg',
-            width: 22,
-            height: 22,
-            colorFilter: const ColorFilter.mode(
-              AppColors.primaryBlue,
-              BlendMode.srcIn,
+          GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: SvgPicture.asset(
+              'assets/icons/back_arrow.svg',
+              width: 22,
+              height: 22,
+              colorFilter: const ColorFilter.mode(
+                AppColors.primaryBlue,
+                BlendMode.srcIn,
+              ),
             ),
           ),
           SizedBox(width: 8),

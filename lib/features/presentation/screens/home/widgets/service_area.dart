@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:service_app_ui/core/data/service_data.dart';
+import 'package:service_app_ui/core/routes/app_routes.dart';
 
 class ServiceArea extends StatelessWidget {
   const ServiceArea({super.key});
@@ -18,16 +19,21 @@ class ServiceArea extends StatelessWidget {
                 'Service',
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
-              Text(
-                'View All',
-                style: TextStyle(
-                  color: Colors.blue,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+              GestureDetector(
+                onTap: () {
+                 Navigator.pushNamed(context, AppRoutes.service);
+                },
+                child: Text(
+                  'View All',
+                  style: TextStyle(
+                    color: Colors.blue,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
             ],

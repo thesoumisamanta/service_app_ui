@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class BottomBar extends StatelessWidget {
   const BottomBar({super.key});
@@ -7,7 +8,7 @@ class BottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(20.0),
         child: Container(
           height: 70,
           decoration: BoxDecoration(
@@ -16,7 +17,7 @@ class BottomBar extends StatelessWidget {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             ),
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(25),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withValues(alpha: 0.15),
@@ -28,11 +29,41 @@ class BottomBar extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _navItem(Icons.home_outlined, 0),
-              _navItem(Icons.article_outlined, 1),
-              _navItem(Icons.add_box_outlined, 2),
-              _navItem(Icons.contacts_outlined, 3),
-              _navItem(Icons.person_outlined, 4),
+              _navItem(
+                Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: SvgPicture.asset('assets/icons/home.svg'),
+                ),
+                0,
+              ),
+              _navItem(
+                Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: SvgPicture.asset('assets/icons/note.svg'),
+                ),
+                1,
+              ),
+              _navItem(
+                Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: SvgPicture.asset('assets/icons/create.svg'),
+                ),
+                2,
+              ),
+              _navItem(
+                Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: SvgPicture.asset('assets/icons/search_2.svg'),
+                ),
+                3,
+              ),
+              _navItem(
+                Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: SvgPicture.asset('assets/icons/user.svg'),
+                ),
+                4,
+              ),
             ],
           ),
         ),
@@ -40,12 +71,16 @@ class BottomBar extends StatelessWidget {
     );
   }
 
-  Widget _navItem(IconData icon, int index) {
-    return GestureDetector(
-      onTap: () {
-        // Handle navigation tap
-      },
-      child: Icon(icon, color: Colors.white, size: 40),
+  Widget _navItem(Widget icon, int index) {
+    return Builder(
+      builder: (context) => GestureDetector(
+        onTap: () {
+          if (index == 2) {
+            Navigator.pushNamed(context, '/create-job');
+          }
+        },
+        child: SizedBox(width: 40, height: 40, child: icon),
+      ),
     );
   }
 }

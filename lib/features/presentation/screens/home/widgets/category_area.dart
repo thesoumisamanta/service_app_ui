@@ -1,39 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:service_app_ui/core/constants/app_colors.dart';
+import 'package:service_app_ui/core/data/service_data.dart';
 
 class CategoryArea extends StatelessWidget {
   const CategoryArea({super.key});
+  final categories =  categoryList;
+
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 200,
-      child: ListView.separated(
+      child: ListView.builder(
         itemBuilder: (context, index) {
-          return _buildCategoryItem();
+          final category = categories[index];
+          return _buildCategoryItem(
+            name: category['name'],
+            image: category['image'],
+            rating: category['rating'],
+            phone: category['phone'],
+          );
         },
-        separatorBuilder: (context, index) => const SizedBox(width: 10),
-        itemCount: 4,
+        itemCount: categories.length,
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
       ),
     );
   }
 
-  Widget _buildCategoryItem() {
+  Widget _buildCategoryItem({
+    required String name,
+    required String image,
+    required double rating,
+    required String phone,
+  }) {
     return Container(
       margin: const EdgeInsets.only(right: 10.0),
-      width: 160,
+      width: 130,
       height: double.infinity,
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(10.0),
-        border: Border.all(color: Colors.grey.withValues(alpha: 0.3)),
+        border: Border.all(color: AppColors.grey2.withValues(alpha: 0.7)),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withValues(alpha: 0.3),
-            spreadRadius: 2,
-            blurRadius: 5,
+            color: AppColors.grey4.withValues(alpha: 0.6),
+            spreadRadius: 1,
+            blurRadius: 4,
             offset: const Offset(0, 3),
           ),
         ],
@@ -43,7 +57,7 @@ class CategoryArea extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(10.0),
             child: Image.asset(
-              'assets/images/category-1.png',
+              image,
               fit: BoxFit.cover,
               width: double.infinity,
               height: 100,
@@ -51,46 +65,57 @@ class CategoryArea extends StatelessWidget {
           ),
           const SizedBox(height: 8.0),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Expanded(
-                child: Text(
-                  'Doe John',
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  overflow: TextOverflow.ellipsis,
+              Text(
+                name,
+                style: const TextStyle(
+                  color: AppColors.black,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w400,
                 ),
               ),
-              // rating stars
-              Row(
-                children: const [
-                  Icon(Icons.star, color: Colors.amber, size: 14),
-                  Icon(Icons.star, color: Colors.amber, size: 14),
-                  Icon(
-                    Icons.star_border_outlined,
-                    color: Colors.black,
-                    size: 14,
-                  ),
-                  // Icon(Icons.star_half, color: Colors.amber, size: 14),
-                ],
-              ),
+              _buildRatingStars(rating),
             ],
           ),
           const SizedBox(height: 8.0),
           Row(
             children: [
-              const Icon(Icons.phone_android, color: Colors.black, size: 14),
-              const SizedBox(width: 5),
+              const Icon(Icons.phone_android, color: AppColors.black, size: 14),
+              const SizedBox(width: 2.0),
               Text(
-                '+1 234 567 890',
-                style: const TextStyle(color: Colors.black, fontSize: 14),
+                phone,
+                style: const TextStyle(color: AppColors.black, fontSize: 12),
               ),
             ],
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildRatingStars(double rating) {
+    int fullStars = rating.floor();
+    bool hasHalfStar = (rating - fullStars) >= 0.5;
+    int emptyStars = 3 - fullStars - (hasHalfStar ? 1 : 0);
+
+    return Row(
+      children: [
+        ...List.generate(
+          fullStars,
+          (index) => const Icon(Icons.star, color: AppColors.orange, size: 14),
+        ),
+        if (hasHalfStar)
+          const Icon(Icons.star_half, color: AppColors.orange, size: 14),
+        ...List.generate(
+          emptyStars,
+          (index) => const Icon(
+            Icons.star_border_outlined,
+            color: Colors.black,
+            size: 14,
+          ),
+        ),
+      ],
     );
   }
 }

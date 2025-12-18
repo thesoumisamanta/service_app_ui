@@ -79,20 +79,21 @@ class _HomeScreenState extends State<HomeScreen> {
                         children: [
                           ServiceArea(),
                           Padding(
-                            padding: const EdgeInsets.all(
-                              20.0,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 20.0,
+                              vertical: 0,
                             ).copyWith(top: 0),
                             child: Text(
-                              'Category',
+                              'Categories',
                               style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 18,
+                                fontSize: 14,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
                           CategoryArea(),
-                          const SizedBox(height: 20),
+                          const SizedBox(height: 60),
                         ],
                       ),
                     ),
