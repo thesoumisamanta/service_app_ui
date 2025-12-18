@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:service_app_ui/core/constants/app_colors.dart';
+import 'package:service_app_ui/core/constants/app_styles.dart';
 import 'package:service_app_ui/core/data/service_data.dart';
 
 class CategoryArea extends StatelessWidget {
@@ -43,14 +44,7 @@ class CategoryArea extends StatelessWidget {
         color: AppColors.white,
         borderRadius: BorderRadius.circular(10.0),
         border: Border.all(color: AppColors.grey2.withValues(alpha: 0.7)),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.grey4.withValues(alpha: 0.6),
-            spreadRadius: 1,
-            blurRadius: 4,
-            offset: const Offset(0, 3),
-          ),
-        ],
+        boxShadow: AppStyles.customBoxShadow
       ),
       child: Column(
         children: [
@@ -111,7 +105,7 @@ class CategoryArea extends StatelessWidget {
           emptyStars,
           (index) => const Icon(
             Icons.star_border_outlined,
-            color: Colors.black,
+            color: AppColors.black,
             size: 14,
           ),
         ),

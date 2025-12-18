@@ -14,9 +14,9 @@ class DoubleOptionButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 45,
+      height: 50,
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.white, width: 0.5),
+        border: Border.all(color: AppColors.white, width: 0.8),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
@@ -27,7 +27,7 @@ class DoubleOptionButton extends StatelessWidget {
                 leftText,
                 style: TextStyle(
                   color: AppColors.white,
-                  fontSize: 12,
+                  fontSize: 14,
                   fontWeight: FontWeight.w600,
                   letterSpacing: 0.3,
                 ),
@@ -43,7 +43,7 @@ class DoubleOptionButton extends StatelessWidget {
                 rightText,
                 style: TextStyle(
                   color: AppColors.white,
-                  fontSize: 12,
+                  fontSize: 14,
                   fontWeight: FontWeight.w600,
                   letterSpacing: 0.3,
                 ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:service_app_ui/core/constants/app_colors.dart';
+import 'package:service_app_ui/core/constants/app_styles.dart';
 import 'package:service_app_ui/features/presentation/widgets/custom_button.dart';
 
 class ServiceCard extends StatelessWidget {
@@ -22,14 +23,7 @@ class ServiceCard extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.white,
         borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.grey4.withValues(alpha: 0.3),
-            spreadRadius: 1,
-            blurRadius: 4,
-            offset: const Offset(0, 3),
-          ),
-        ],
+        boxShadow: AppStyles.customBoxShadow
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
@@ -81,9 +75,7 @@ class ServiceCard extends StatelessWidget {
                     borderRadius: 10,
                     fontSize: 14,
                     onPressed: () {},
-                    gradient: const LinearGradient(
-                      colors: [AppColors.primaryBlue, AppColors.primaryPurple],
-                    ),
+                    gradient: AppStyles.gradientBg,
                   ),
                 ],
               ),

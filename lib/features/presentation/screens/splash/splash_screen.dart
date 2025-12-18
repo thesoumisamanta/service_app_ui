@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:service_app_ui/core/constants/app_colors.dart';
+import 'package:service_app_ui/core/constants/app_styles.dart';
 import 'package:service_app_ui/core/helpers/white_status_bar.dart';
 import 'package:service_app_ui/core/routes/app_routes.dart';
 import 'package:service_app_ui/features/presentation/widgets/double_option_button.dart';
@@ -61,19 +62,15 @@ class _SplashScreenState extends State<SplashScreen>
             Image.asset('assets/images/home_bg.jpg', fit: BoxFit.cover),
             Container(
               decoration: BoxDecoration(
-                gradient: AppColors.splashOverlayGradient,
+                gradient: AppStyles.splashOverlayGradient,
               ),
             ),
 
             Center(
-              child: SvgPicture.asset(
-                'assets/icons/notification_icon.svg',
-                width: 80,
-                height: 80,
-                colorFilter: const ColorFilter.mode(
-                  AppColors.white,
-                  BlendMode.srcIn,
-                ),
+              child: Image.asset(
+                'assets/images/home_icon.png',
+                width: 100,
+                height: 100,
               ),
             ),
 
@@ -85,7 +82,7 @@ class _SplashScreenState extends State<SplashScreen>
                   alignment: Alignment.bottomCenter,
                   child: Container(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 24,
+                      horizontal: 32,
                       vertical: 32,
                     ),
                     child: Column(
@@ -96,8 +93,8 @@ class _SplashScreenState extends State<SplashScreen>
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: AppColors.white,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
 
@@ -115,7 +112,8 @@ class _SplashScreenState extends State<SplashScreen>
                             text: 'Already have an account? ',
                             style: TextStyle(
                               color: AppColors.white,
-                              fontSize: 12,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
                             ),
                             children: [
                               TextSpan(
@@ -123,6 +121,7 @@ class _SplashScreenState extends State<SplashScreen>
                                 style: const TextStyle(
                                   color: AppColors.white,
                                   fontWeight: FontWeight.w600,
+                                  fontSize: 14,
                                 ),
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () {

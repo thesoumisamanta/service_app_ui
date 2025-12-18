@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:service_app_ui/core/constants/app_colors.dart';
+import 'package:service_app_ui/core/constants/app_styles.dart';
 import 'package:service_app_ui/core/routes/app_routes.dart';
 import 'package:service_app_ui/features/presentation/widgets/custom_button.dart';
 import 'package:service_app_ui/features/presentation/widgets/custom_text_field.dart';
@@ -36,17 +37,13 @@ class _VerificationScreenState extends State<VerificationScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 50),
-                  SvgPicture.asset(
-                    'assets/icons/notification_icon.svg',
-                    width: 35,
-                    height: 35,
-                    colorFilter: const ColorFilter.mode(
-                      AppColors.white,
-                      BlendMode.srcIn,
-                    ),
+                  const SizedBox(height: 40),
+                  Image.asset(
+                    'assets/images/home_icon.png',
+                    width: 45,
+                    height: 45,
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 40),
                   const Text(
                     'Verification',
                     style: TextStyle(
@@ -78,7 +75,8 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 child: Column(
                   children: [
                     CustomTextField(
-                      label: 'Email',
+                      label: 'Enter email address',
+                      labelColor: AppColors.grey6,
                       hint: 'Enter your email',
                       type: TextFieldType.name,
                       validator: (value) {
@@ -97,7 +95,6 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     OtpInputWidget(
                       length: 4,
                       onCompleted: (otp) {},
-                      spacing: 16.0,
                       borderColor: Colors.grey.shade300,
                       focusedBorderColor: Colors.blue,
                       borderWidth: 2.0,
@@ -107,17 +104,9 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     CustomButton(
                       text: 'Submit',
                       onPressed: () {
-                        Navigator.pushReplacementNamed(
-                          context,
-                          AppRoutes.home,
-                        );
+                        Navigator.pushReplacementNamed(context, AppRoutes.auth);
                       },
-                      gradient: const LinearGradient(
-                        colors: [
-                          AppColors.primaryBlue,
-                          AppColors.primaryPurple,
-                        ],
-                      ),
+                      gradient: AppStyles.gradientBg,
                     ),
                   ],
                 ),

@@ -15,7 +15,7 @@ class OtpInputWidget extends StatefulWidget {
     super.key,
     this.length = 4,
     required this.onCompleted,
-    this.spacing = 16.0,
+    this.spacing = 26.0,
     this.borderColor = AppColors.grey2,
     this.focusedBorderColor = AppColors.primaryBlue,
     this.borderWidth = 2.0,
@@ -104,40 +104,44 @@ class _OtpInputWidgetState extends State<OtpInputWidget> {
                 widget.length,
                 (index) => SizedBox(
                   width: boxSize,
-                  child: KeyboardListener(
-                    focusNode: _keyboardFocusNodes[index],
-                    onKeyEvent: (event) => _onKeyEvent(event, index),
-                    child: TextField(
-                      controller: _controllers[index],
-                      focusNode: _focusNodes[index],
-                      textAlign: TextAlign.center,
-                      keyboardType: TextInputType.number,
-                      maxLength: 1,
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.darkGrey,
-                      ),
-                      decoration: InputDecoration(
-                        counterText: '',
-                        contentPadding: EdgeInsets.zero,
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(widget.borderRadius),
-                          borderSide: BorderSide(
-                            color: widget.borderColor,
-                            width: widget.borderWidth,
+                  child: AspectRatio(
+                    aspectRatio: 1,
+                    child: KeyboardListener(
+                      focusNode: _keyboardFocusNodes[index],
+                      onKeyEvent: (event) => _onKeyEvent(event, index),
+                      child: TextField(
+                        
+                        controller: _controllers[index],
+                        focusNode: _focusNodes[index],
+                        textAlign: TextAlign.center,
+                        keyboardType: TextInputType.number,
+                        maxLength: 1,
+                        style: const TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.darkGrey,
+                        ),
+                        decoration: InputDecoration(
+                          counterText: '',
+                          contentPadding: EdgeInsets.symmetric(vertical: 16),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(widget.borderRadius),
+                            borderSide: BorderSide(
+                              color: widget.borderColor,
+                              width: widget.borderWidth,
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(widget.borderRadius),
+                            borderSide: BorderSide(
+                              color: widget.focusedBorderColor,
+                              width: widget.borderWidth,
+                            ),
                           ),
                         ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(widget.borderRadius),
-                          borderSide: BorderSide(
-                            color: widget.focusedBorderColor,
-                            width: widget.borderWidth,
-                          ),
-                        ),
+                        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                        onChanged: (value) => _onChanged(value, index),
                       ),
-                      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                      onChanged: (value) => _onChanged(value, index),
                     ),
                   ),
                 ),

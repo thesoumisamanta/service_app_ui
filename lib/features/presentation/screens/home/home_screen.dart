@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:service_app_ui/core/constants/app_colors.dart';
+import 'package:service_app_ui/core/constants/app_styles.dart';
 import 'package:service_app_ui/features/presentation/screens/home/widgets/category_area.dart';
 import 'package:service_app_ui/features/presentation/screens/home/widgets/home_header.dart';
 import 'package:service_app_ui/features/presentation/screens/home/widgets/service_area.dart';
@@ -22,13 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       extendBody: true,
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [AppColors.primaryBlue, AppColors.primaryPurple],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
-        ),
+        decoration: BoxDecoration(gradient: AppStyles.gradientBg),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -36,20 +31,31 @@ class _HomeScreenState extends State<HomeScreen> {
             HomeHeader(),
             Padding(
               padding: const EdgeInsets.symmetric(
-                horizontal: 16.0,
+                horizontal: 24.0,
                 vertical: 20,
               ),
-              child: CustomTextField(
-                hint: 'Search for \'Asphalt Repair\'',
-                height: 50,
-                centerContent: true,
-                bgColor: AppColors.white,
-                prefixIcon: Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: SvgPicture.asset(
-                    'assets/icons/search.svg',
-                    width: 20,
-                    height: 20,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: AppColors.white,
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                alignment: Alignment.center,
+                child: IntrinsicWidth(
+                  child: CustomTextField(
+                    hint: 'Search for \'Asphalt Repair\'',
+                    height: 50,
+                    bgColor: AppColors.white,
+                    borderColor: Colors.transparent,
+                    focusedBorderColor: Colors.transparent,
+                    hintFontSize: 18,
+                    prefixIcon: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: SvgPicture.asset(
+                        'assets/icons/search.svg',
+                        width: 20,
+                        height: 20,
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -68,33 +74,35 @@ class _HomeScreenState extends State<HomeScreen> {
                     Container(
                       width: double.infinity,
                       decoration: const BoxDecoration(
-                        color: Colors.white,
+                        color: AppColors.white,
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(30.0),
                           topRight: Radius.circular(30.0),
                         ),
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          ServiceArea(),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 20.0,
-                              vertical: 0,
-                            ).copyWith(top: 0),
-                            child: Text(
-                              'Categories',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
+                      child: SafeArea(
+                        top: false,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ServiceArea(),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 20.0,
+                                vertical: 0,
+                              ).copyWith(top: 0),
+                              child: Text(
+                                'Categories',
+                                style: TextStyle(
+                                  color: AppColors.black,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
-                          ),
-                          CategoryArea(),
-                          const SizedBox(height: 60),
-                        ],
+                            CategoryArea(),
+                          ],
+                        ),
                       ),
                     ),
                   ],
@@ -110,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _carouselItem() {
     return Container(
-      color: Colors.white,
+      color: AppColors.white,
       padding: const EdgeInsets.all(14.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -122,8 +130,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 'Sealcoating Services',
                 style: TextStyle(
                   color: AppColors.primaryBlue,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
               SizedBox(height: 10),
@@ -133,8 +141,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     'Rs. 699',
                     style: TextStyle(
                       color: AppColors.primaryBlue,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
                       decoration: TextDecoration.lineThrough,
                       decorationColor: AppColors.primaryPurple,
                     ),
@@ -144,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     'Rs. 299/year only',
                     style: TextStyle(
                       color: Color(0xFF3865E0),
-                      fontSize: 16,
+                      fontSize: 14,
                       fontWeight: FontWeight.w400,
                     ),
                   ),
@@ -163,9 +171,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 12,
                 ),
                 onPressed: () {},
-                gradient: const LinearGradient(
-                  colors: [AppColors.primaryBlue, AppColors.primaryPurple],
-                ),
+                gradient: AppStyles.gradientBg,
               ),
               SizedBox(height: 10),
               Text(

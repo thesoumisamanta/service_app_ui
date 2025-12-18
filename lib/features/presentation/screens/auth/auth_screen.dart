@@ -40,28 +40,24 @@ class _AuthScreenState extends State<AuthScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const SizedBox(height: 50),
-                    SvgPicture.asset(
-                      'assets/icons/notification_icon.svg',
-                      width: 35,
-                      height: 35,
-                      colorFilter: const ColorFilter.mode(
-                        AppColors.white,
-                        BlendMode.srcIn,
-                      ),
+                    Image.asset(
+                      'assets/images/home_icon.png',
+                      width: 45,
+                      height: 45,
                     ),
                     const SizedBox(height: 16),
                     const Text(
                       'Get Started now',
                       style: TextStyle(
                         color: AppColors.white,
-                        fontSize: 26,
-                        fontWeight: FontWeight.w700,
+                        fontSize: 32,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 6),
                     const Text(
                       'Create an account or log in to explore about our app',
-                      style: TextStyle(color: Colors.white, fontSize: 14),
+                      style: TextStyle(color: AppColors.white, fontSize: 12),
                     ),
                   ],
                 ),
@@ -87,6 +83,8 @@ class _AuthScreenState extends State<AuthScreen> {
                     children: [
                       AnimatedToggleButton(
                         values: ['Log In', 'Sign Up'],
+                        height: 36,
+                        width: MediaQuery.of(context).size.width,
                         initialIndex: _selectedIndex,
                         onToggle: (value) {
                           setState(() {

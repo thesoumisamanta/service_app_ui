@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:service_app_ui/core/constants/app_colors.dart';
 import 'package:service_app_ui/core/data/service_data.dart';
 import 'package:service_app_ui/core/routes/app_routes.dart';
 
@@ -30,7 +31,7 @@ class ServiceArea extends StatelessWidget {
                 child: Text(
                   'View All',
                   style: TextStyle(
-                    color: Colors.blue,
+                    color: AppColors.primaryBlue,
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
                   ),
@@ -75,7 +76,7 @@ class ServiceArea extends StatelessWidget {
             child: Text(
               title,
               style: const TextStyle(
-                color: Colors.white,
+                color: AppColors.white,
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),

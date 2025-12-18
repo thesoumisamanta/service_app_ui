@@ -19,7 +19,7 @@ class CustomButton extends StatelessWidget {
     this.onPressed,
     this.gradient,
     this.isLoading = false,
-    this.height = 56,
+    this.height = 50,
     this.borderRadius = 14,
     this.width,
     this.prefixIcon,

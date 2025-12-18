@@ -25,6 +25,8 @@ class CustomTextField extends StatelessWidget {
   final double? height;
   final Color? bgColor;
   final bool centerContent;
+  final Color? focusedBorderColor;
+  final double? hintFontSize;
 
   const CustomTextField({
     super.key,
@@ -48,6 +50,8 @@ class CustomTextField extends StatelessWidget {
     this.fontWeight,
     this.bgColor,
     this.centerContent = false,
+    this.focusedBorderColor,
+    this.hintFontSize,
   });
 
   TextInputType get _keyboardType {
@@ -124,13 +128,15 @@ class CustomTextField extends StatelessWidget {
           height: height,
           child: TextFormField(
             controller: controller,
+            obscuringCharacter: '*',
+            style: TextStyle(letterSpacing: 1),
             keyboardType: _keyboardType,
             obscureText: obscureText,
             enabled: enabled,
             maxLength: maxLength,
-            maxLines: height != null ? null : maxLines,
-            minLines: height != null ? null : 1,
-            expands: height != null,
+            maxLines: 1,
+            minLines: 1,
+            expands: false,
             textAlign: centerContent ? TextAlign.center : TextAlign.start,
             textCapitalization: _textCapitalization,
             inputFormatters: _inputFormatters,
@@ -138,7 +144,7 @@ class CustomTextField extends StatelessWidget {
             validator: validator,
             decoration: InputDecoration(
               hintText: hint,
-              hintStyle: const TextStyle(color: AppColors.grey4, fontSize: 14),
+              hintStyle: TextStyle(color: AppColors.grey4, fontSize: hintFontSize ?? 14),
               prefixIcon: prefixIcon,
               suffixIcon: suffixIcon,
               filled: bgColor != null,
@@ -152,7 +158,7 @@ class CustomTextField extends StatelessWidget {
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: AppColors.primaryBlue),
+                borderSide: BorderSide(color: focusedBorderColor ?? AppColors.primaryBlue),
               ),
             ),
           ),

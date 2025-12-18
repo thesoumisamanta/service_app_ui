@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:service_app_ui/core/constants/app_colors.dart';
+import 'package:service_app_ui/core/constants/app_styles.dart';
 
 class BottomBar extends StatelessWidget {
   const BottomBar({super.key});
@@ -12,19 +14,9 @@ class BottomBar extends StatelessWidget {
         child: Container(
           height: 70,
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Color(0xFF124A9A), Color(0xFF3865E0)],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
+            gradient: AppStyles.gradientBg,
             borderRadius: BorderRadius.circular(25),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: 0.15),
-                blurRadius: 20,
-                offset: Offset(0, 10),
-              ),
-            ],
+            boxShadow: AppStyles.customBoxShadow
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,

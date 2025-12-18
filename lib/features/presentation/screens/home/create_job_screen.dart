@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:service_app_ui/core/constants/app_colors.dart';
+import 'package:service_app_ui/core/constants/app_styles.dart';
 import 'package:service_app_ui/core/routes/app_routes.dart';
 import 'package:service_app_ui/features/presentation/widgets/custom_button.dart';
 import 'package:service_app_ui/features/presentation/widgets/custom_text_field.dart';
@@ -151,7 +152,7 @@ class CreateJobScreen extends StatelessWidget {
                       borderColor: AppColors.lightBlue.withValues(alpha: 0.5),
                       labelIcon: SvgPicture.asset(
                         'assets/icons/tag.svg',
-                         width: 20,
+                        width: 20,
                         height: 20,
                       ),
                       type: TextFieldType.text,
@@ -166,7 +167,7 @@ class CreateJobScreen extends StatelessWidget {
                       borderColor: AppColors.lightBlue.withValues(alpha: 0.5),
                       labelIcon: SvgPicture.asset(
                         'assets/icons/tag.svg',
-                         width: 20,
+                        width: 20,
                         height: 20,
                       ),
                       type: TextFieldType.text,
@@ -179,12 +180,7 @@ class CreateJobScreen extends StatelessWidget {
                       onPressed: () {
                         Navigator.pushNamed(context, AppRoutes.service);
                       },
-                      gradient: const LinearGradient(
-                        colors: [
-                          AppColors.primaryBlue,
-                          AppColors.primaryPurple,
-                        ],
-                      ),
+                      gradient: AppStyles.gradientBg,
                     ),
                   ],
                 ),
@@ -192,6 +188,7 @@ class CreateJobScreen extends StatelessWidget {
             ),
           ),
         ],
+        
       ),
     );
   }

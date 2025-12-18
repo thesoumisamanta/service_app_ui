@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:service_app_ui/core/constants/app_colors.dart';
+import 'package:service_app_ui/core/constants/app_styles.dart';
 import 'package:service_app_ui/features/presentation/widgets/custom_button.dart';
 import 'package:service_app_ui/features/presentation/widgets/custom_check_box.dart';
 import 'package:service_app_ui/features/presentation/widgets/custom_text_field.dart';
@@ -25,6 +26,7 @@ class _LoginWidgetState extends State<LoginWidget> {
         CustomTextField(
           label: 'Email',
           hint: 'Enter your email',
+          height: 47,
           type: TextFieldType.name,
           validator: (value) {
             if (value == null || value.isEmpty) {
@@ -41,6 +43,7 @@ class _LoginWidgetState extends State<LoginWidget> {
           label: 'Password',
           labelColor: AppColors.darkGrey,
           hint: 'Enter your password',
+          height: 50,
           type: TextFieldType.password,
           obscureText: isPasswordHidden,
           suffixIcon: GestureDetector(
@@ -53,8 +56,8 @@ class _LoginWidgetState extends State<LoginWidget> {
               padding: const EdgeInsets.all(14.0),
               child: SvgPicture.asset(
                 isPasswordHidden
-                    ? 'assets/icons/eye.svg'
-                    : 'assets/icons/eye_off.svg',
+                    ? 'assets/icons/eye_off.svg'
+                    : 'assets/icons/eye.svg',
                     colorFilter: const ColorFilter.mode(
                       AppColors.grey2,
                       BlendMode.srcIn,
@@ -99,10 +102,10 @@ class _LoginWidgetState extends State<LoginWidget> {
         const SizedBox(height: 24),
         CustomButton(
           text: 'Log In',
-          onPressed: () {},
-          gradient: const LinearGradient(
-            colors: [AppColors.primaryBlue, AppColors.primaryPurple],
-          ),
+          onPressed: () {
+            Navigator.pushReplacementNamed(context, '/home');
+          },
+          gradient: AppStyles.gradientBg,
         ),
         const SizedBox(height: 16),
         OrDivider(),

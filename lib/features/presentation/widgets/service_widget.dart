@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:service_app_ui/core/constants/app_colors.dart';
+import 'package:service_app_ui/core/constants/app_styles.dart';
 
 class ServiceWidget extends StatelessWidget {
   const ServiceWidget({super.key});
@@ -13,14 +14,7 @@ class ServiceWidget extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         color: AppColors.white,
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.grey4.withValues(alpha: 0.6),
-            spreadRadius: 1,
-            blurRadius: 4,
-            offset: const Offset(0, 3),
-          ),
-        ],
+        boxShadow: AppStyles.customBoxShadow
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

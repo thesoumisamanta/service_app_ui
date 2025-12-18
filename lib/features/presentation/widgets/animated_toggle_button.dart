@@ -15,30 +15,25 @@ class AnimatedToggleButton extends StatefulWidget {
   final TextStyle? textStyle;
   final TextStyle? selectedTextStyle;
 
-  /// Creates an animated toggle button with customizable options.
-  /// The button allows toggling between multiple options with smooth animations.
-  ///
-  /// Throws an assertion error if [values] has less than 2 items or if [icons]
-  /// is provided but does not match the length of [values].
   const AnimatedToggleButton({
     super.key,
     required this.values,
     required this.onToggle,
-    this.backgroundColor = AppColors.lightGrey,
-    this.buttonColor = AppColors.white,
-    this.height = 38.0,
-    this.width = double.infinity - 32.0,
+    this.backgroundColor = const Color(0xFFF5F6F9),
+    this.buttonColor = const Color(0xFFFFFFFF),
+    this.height = 28.0,
+    this.width = 100.0,
     this.animationDuration = const Duration(milliseconds: 200),
     this.animationCurve = Curves.easeInOut,
     this.initialIndex = 0,
     this.padding = const EdgeInsets.all(2.0),
     this.textStyle,
     this.selectedTextStyle,
-  })  : assert(values.length >= 2, 'At least two values are required'),
-        assert(
-          initialIndex >= 0 && initialIndex < values.length,
-          'Initial position must be within the range of values list.',
-        );
+  }) : assert(values.length >= 2, 'At least two values are required'),
+       assert(
+         initialIndex >= 0 && initialIndex < values.length,
+         'Initial position must be within the range of values list.',
+       );
 
   @override
   State<AnimatedToggleButton> createState() => _AnimatedToggleButtonState();
@@ -142,18 +137,22 @@ class _AnimatedToggleButtonState extends State<AnimatedToggleButton>
     final String content = widget.values[index];
 
     // Get base styles
-    final TextStyle normalStyle = widget.textStyle ??
+    final TextStyle normalStyle =
+        widget.textStyle ??
         const TextStyle(
-            fontSize: 10,
-            fontWeight: FontWeight.w400,
-            fontFamily: 'Inter',
-            color: Color.fromRGBO(0, 0, 0, 1.0));
-    final TextStyle selectedStyle = widget.selectedTextStyle ??
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+          fontFamily: 'Inter',
+          color: AppColors.darkBlue,
+        );
+    final TextStyle selectedStyle =
+        widget.selectedTextStyle ??
         const TextStyle(
-            fontSize: 10,
-            fontWeight: FontWeight.w700,
-            fontFamily: 'Inter',
-            color: Color.fromRGBO(0, 0, 0, 1.0));
+          fontSize: 14,
+          fontWeight: FontWeight.w500,
+          fontFamily: 'Inter',
+          color: AppColors.grey5,
+        );
 
     // Use AnimatedBuilder for smooth transitions of all style properties
     return AnimatedBuilder(
@@ -164,10 +163,12 @@ class _AnimatedToggleButtonState extends State<AnimatedToggleButton>
             normalStyle.fontWeight?.index ?? 3; // w400 = normal
         final int selectedWeightIndex =
             selectedStyle.fontWeight?.index ?? 6; // w700 = bold
-        final int weightIndex = (normalWeightIndex +
-                ((selectedWeightIndex - normalWeightIndex) * controller.value)
-                    .round())
-            .clamp(0, FontWeight.values.length - 1);
+        final int weightIndex =
+            (normalWeightIndex +
+                    ((selectedWeightIndex - normalWeightIndex) *
+                            controller.value)
+                        .round())
+                .clamp(0, FontWeight.values.length - 1);
         final FontWeight fontWeight = FontWeight.values[weightIndex];
 
         // Interpolate font size
@@ -186,7 +187,8 @@ class _AnimatedToggleButtonState extends State<AnimatedToggleButton>
         // Interpolate letter spacing if defined
         final double normalSpacing = normalStyle.letterSpacing ?? 0.0;
         final double selectedSpacing = selectedStyle.letterSpacing ?? 0.0;
-        final double letterSpacing = normalSpacing +
+        final double letterSpacing =
+            normalSpacing +
             (selectedSpacing - normalSpacing) * controller.value;
 
         // Create interpolated text style with all animated properties
@@ -242,7 +244,6 @@ class _AnimatedToggleButtonState extends State<AnimatedToggleButton>
   }
 
   void _onToggle(int index) {
-
     setState(() {
       _currentIndex = index;
     });

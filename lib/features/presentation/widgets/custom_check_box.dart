@@ -31,16 +31,21 @@ class CustomCheckbox extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           SizedBox(
-            width: 20,
-            height: 20,
-            child: Checkbox(
-              value: value,
-              onChanged: (newValue) => onChanged(newValue ?? false),
-              activeColor: checkboxColor ?? AppColors.primaryBlue,
-              checkColor: AppColors.white,
-              side: BorderSide(
-                color: borderColor ?? AppColors.darkGrey,
-                width: 2,
+            width: 18,
+            height: 18, 
+            child: Center(
+              child: Transform.scale(
+                scale: 0.7,
+                child: Checkbox(
+                  value: value,
+                  onChanged: (newValue) => onChanged(newValue ?? false),
+                  activeColor: checkboxColor ?? AppColors.primaryBlue,
+                  checkColor: AppColors.white,
+                  side: BorderSide(
+                    color: borderColor ?? AppColors.darkGrey,
+                    width: 2,
+                  ),
+                ),
               ),
             ),
           ),
@@ -48,7 +53,7 @@ class CustomCheckbox extends StatelessWidget {
           Text(
             text,
             style: TextStyle(
-              color: textColor ?? Colors.black87,
+              color: textColor ?? AppColors.grey6,
               fontSize: fontSize ?? 12,
               fontWeight: fontWeight ?? FontWeight.w500,
             ),

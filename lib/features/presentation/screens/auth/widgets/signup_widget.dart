@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:service_app_ui/core/constants/app_colors.dart';
+import 'package:service_app_ui/core/constants/app_styles.dart';
 import 'package:service_app_ui/core/routes/app_routes.dart';
 import 'package:service_app_ui/features/presentation/widgets/custom_button.dart';
 import 'package:service_app_ui/features/presentation/widgets/custom_check_box.dart';
@@ -23,6 +24,7 @@ class _SignupWidgetState extends State<SignupWidget> {
         CustomTextField(
           label: 'Name',
           hint: 'Enter your name',
+          height: 47,
           type: TextFieldType.name,
           // controller: _nameController,
         ),
@@ -30,6 +32,7 @@ class _SignupWidgetState extends State<SignupWidget> {
         CustomTextField(
           label: 'Email',
           hint: 'Enter your email',
+          height: 47,
           type: TextFieldType.name,
           validator: (value) {
             if (value == null || value.isEmpty) {
@@ -45,6 +48,7 @@ class _SignupWidgetState extends State<SignupWidget> {
         CustomTextField(
           label: 'Phone',
           hint: 'Enter your phone number',
+          height: 47,
           type: TextFieldType.phone,
           // controller: _phoneController,
         ),
@@ -53,6 +57,7 @@ class _SignupWidgetState extends State<SignupWidget> {
           label: 'Password',
           hint: 'Enter your password',
           type: TextFieldType.password,
+          height: 47,
           obscureText: isPasswordHidden,
           suffixIcon: GestureDetector(
             onTap: () {
@@ -87,6 +92,7 @@ class _SignupWidgetState extends State<SignupWidget> {
         CustomTextField(
           label: 'Password',
           hint: 'Enter your password',
+          height: 47,
           type: TextFieldType.password,
           obscureText: isPasswordHidden,
           suffixIcon: GestureDetector(
@@ -141,9 +147,7 @@ class _SignupWidgetState extends State<SignupWidget> {
           onPressed: () {
             Navigator.pushReplacementNamed(context, AppRoutes.verification);
           },
-          gradient: const LinearGradient(
-            colors: [AppColors.primaryBlue, AppColors.primaryPurple],
-          ),
+          gradient: AppStyles.gradientBg,
         ),
       ],
     );

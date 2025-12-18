@@ -20,7 +20,7 @@ class OrDivider extends StatelessWidget {
             'Or',
             style: TextStyle(
               fontSize: 14,
-              color: AppColors.grey,
+              color: AppColors.grey6,
               fontWeight: FontWeight.w500,
             ),
           ),
