@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:service_app_ui/core/constants/app_colors.dart';
+import 'package:service_app_ui/core/routes/app_routes.dart';
 import 'package:service_app_ui/features/presentation/widgets/custom_button.dart';
 import 'package:service_app_ui/features/presentation/widgets/custom_text_field.dart';
 import 'package:service_app_ui/features/presentation/widgets/step_indicator.dart';
@@ -102,8 +103,8 @@ class CreateJobScreen extends StatelessWidget {
                       borderColor: AppColors.lightBlue.withValues(alpha: 0.5),
                       labelIcon: SvgPicture.asset(
                         'assets/icons/tag.svg',
-                        width: 16,
-                        height: 16,
+                        width: 20,
+                        height: 20,
                       ),
                       type: TextFieldType.text,
                       isRequired: true,
@@ -119,9 +120,9 @@ class CreateJobScreen extends StatelessWidget {
                       isRequired: true,
                       borderColor: AppColors.lightBlue.withValues(alpha: 0.5),
                       labelIcon: SvgPicture.asset(
-                        'assets/icons/tag.svg',
-                        width: 16,
-                        height: 16,
+                        'assets/icons/file_upload.svg',
+                        width: 24,
+                        height: 24,
                       ),
                       // controller: _nameController,
                     ),
@@ -145,8 +146,8 @@ class CreateJobScreen extends StatelessWidget {
                       borderColor: AppColors.lightBlue.withValues(alpha: 0.5),
                       labelIcon: SvgPicture.asset(
                         'assets/icons/tag.svg',
-                        width: 16,
-                        height: 16,
+                         width: 20,
+                        height: 20,
                       ),
                       type: TextFieldType.text,
                       isRequired: true,
@@ -160,8 +161,8 @@ class CreateJobScreen extends StatelessWidget {
                       borderColor: AppColors.lightBlue.withValues(alpha: 0.5),
                       labelIcon: SvgPicture.asset(
                         'assets/icons/tag.svg',
-                        width: 16,
-                        height: 16,
+                         width: 20,
+                        height: 20,
                       ),
                       type: TextFieldType.text,
                       isRequired: true,
@@ -170,7 +171,9 @@ class CreateJobScreen extends StatelessWidget {
                     const SizedBox(height: 32),
                     CustomButton(
                       text: 'Next',
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, AppRoutes.service);
+                      },
                       gradient: const LinearGradient(
                         colors: [
                           AppColors.primaryBlue,
