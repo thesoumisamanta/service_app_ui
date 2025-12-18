@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:service_app_ui/core/constants/app_colors.dart';
 import 'package:service_app_ui/features/presentation/widgets/custom_button.dart';
 import 'package:service_app_ui/features/presentation/widgets/custom_text_field.dart';
+import 'package:service_app_ui/features/presentation/widgets/step_indicator.dart';
 
 class CreateJobScreen extends StatelessWidget {
   const CreateJobScreen({super.key});
@@ -92,9 +93,12 @@ class CreateJobScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
+                    StepIndicator(currentStep: 1, totalSteps: 3),
+                    const SizedBox(height: 24),
                     CustomTextField(
                       label: 'Job Title',
                       labelColor: AppColors.black,
+                      fontWeight: FontWeight.w600,
                       borderColor: AppColors.lightBlue.withValues(alpha: 0.5),
                       labelIcon: SvgPicture.asset(
                         'assets/icons/tag.svg',
@@ -109,14 +113,58 @@ class CreateJobScreen extends StatelessWidget {
                     CustomTextField(
                       height: 110,
                       label: 'Details',
+                      fontWeight: FontWeight.w600,
                       type: TextFieldType.text,
                       labelColor: AppColors.black,
+                      isRequired: true,
                       borderColor: AppColors.lightBlue.withValues(alpha: 0.5),
                       labelIcon: SvgPicture.asset(
                         'assets/icons/tag.svg',
                         width: 16,
                         height: 16,
                       ),
+                      // controller: _nameController,
+                    ),
+                    const SizedBox(height: 24),
+                    CustomTextField(
+                      label: 'Category',
+                      fontWeight: FontWeight.w600,
+                      labelColor: AppColors.black,
+                      suffixIcon: Padding(
+                        padding: const EdgeInsets.all(14.0),
+                        child: SvgPicture.asset(
+                          'assets/icons/down_arrow.svg',
+                          width: 10,
+                          height: 10,
+                          colorFilter: const ColorFilter.mode(
+                            AppColors.black,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                      ),
+                      borderColor: AppColors.lightBlue.withValues(alpha: 0.5),
+                      labelIcon: SvgPicture.asset(
+                        'assets/icons/tag.svg',
+                        width: 16,
+                        height: 16,
+                      ),
+                      type: TextFieldType.text,
+                      isRequired: true,
+                      // controller: _nameController,
+                    ),
+                    const SizedBox(height: 24),
+                    CustomTextField(
+                      label: 'Required Skills',
+                      labelColor: AppColors.black,
+                      fontWeight: FontWeight.w600,
+                      borderColor: AppColors.lightBlue.withValues(alpha: 0.5),
+                      labelIcon: SvgPicture.asset(
+                        'assets/icons/tag.svg',
+                        width: 16,
+                        height: 16,
+                      ),
+                      type: TextFieldType.text,
+                      isRequired: true,
                       // controller: _nameController,
                     ),
                     const SizedBox(height: 32),

@@ -7,6 +7,7 @@ enum TextFieldType { text, name, email, password, phone }
 class CustomTextField extends StatelessWidget {
   final String? label;
   final Color? labelColor;
+  final FontWeight? fontWeight;
   final String? hint;
   final TextFieldType type;
   final TextEditingController? controller;
@@ -42,6 +43,7 @@ class CustomTextField extends StatelessWidget {
     this.isRequired = false,
     this.borderColor,
     this.height,
+    this.fontWeight
   });
 
   TextInputType get _keyboardType {
@@ -95,17 +97,17 @@ class CustomTextField extends StatelessWidget {
                   label!,
                   style: TextStyle(
                     fontSize: 14,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: fontWeight ?? FontWeight.w500,
                     color: labelColor,
                   ),
                 ),
                 if (isRequired)
                   const Padding(
-                    padding: EdgeInsets.only(left: 4),
+                    padding: EdgeInsets.only(left: 2),
                     child: Text(
                       '*',
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 16,
                         fontWeight: FontWeight.w500,
                         color: AppColors.black,
                       ),
