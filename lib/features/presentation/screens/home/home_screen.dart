@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:service_app_ui/core/constants/app_colors.dart';
 import 'package:service_app_ui/core/constants/app_styles.dart';
+import 'package:service_app_ui/features/presentation/screens/home/widgets/carousel_item.dart';
 import 'package:service_app_ui/features/presentation/screens/home/widgets/category_area.dart';
 import 'package:service_app_ui/features/presentation/screens/home/widgets/home_header.dart';
 import 'package:service_app_ui/features/presentation/screens/home/widgets/service_area.dart';
@@ -65,10 +66,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
                   children: [
                     CarouselSlider(
-                      maxHeight: 150,
+                      maxHeight: 130,
                       itemSpacing: 5,
                       viewportFraction: 0.92,
-                      items: List.generate(3, (index) => _carouselItem()),
+                      items: List.generate(3, (index) => CarouselItem()),
                     ),
                     const SizedBox(height: 10),
                     Container(
@@ -113,88 +114,6 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       bottomNavigationBar: BottomBar(),
-    );
-  }
-
-  Widget _carouselItem() {
-    return Container(
-      color: AppColors.white,
-      padding: const EdgeInsets.all(14.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Sealcoating Services',
-                style: TextStyle(
-                  color: AppColors.primaryBlue,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              SizedBox(height: 10),
-              Row(
-                children: [
-                  Text(
-                    'Rs. 699',
-                    style: TextStyle(
-                      color: AppColors.primaryBlue,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      decoration: TextDecoration.lineThrough,
-                      decorationColor: AppColors.primaryPurple,
-                    ),
-                  ),
-                  SizedBox(width: 20),
-                  Text(
-                    'Rs. 299/year only',
-                    style: TextStyle(
-                      color: Color(0xFF3865E0),
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 10),
-              CustomButton(
-                text: 'Buy Now',
-                height: 30,
-                width: 150,
-                borderRadius: 10,
-                fontSize: 14,
-                suffixIcon: SvgPicture.asset(
-                  'assets/icons/right_arrow.svg',
-                  width: 12,
-                  height: 12,
-                ),
-                onPressed: () {},
-                gradient: AppStyles.gradientBg,
-              ),
-              SizedBox(height: 10),
-              Text(
-                '*Medicine Delivery: Up to 25% Off | Lab Tests: Up to 25% Off | Home Visit: ₹499 Only!',
-                style: TextStyle(
-                  color: Color(0xFF124A9A),
-                  fontSize: 6,
-                  fontWeight: FontWeight.w400,
-                ),
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                softWrap: true,
-              ),
-            ],
-          ),
-          Image.asset(
-            'assets/images/sealcoating_sevices.jpg',
-            width: 100,
-            height: 100,
-            fit: BoxFit.cover,
-          ),
-        ],
-      ),
     );
   }
 }

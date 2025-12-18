@@ -89,6 +89,8 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isMultiline = !obscureText && (height != null && height! > 60 || maxLines > 1);
+    
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -130,14 +132,15 @@ class CustomTextField extends StatelessWidget {
             controller: controller,
             obscuringCharacter: '*',
             style: TextStyle(letterSpacing: 1),
-            keyboardType: _keyboardType,
+            keyboardType: isMultiline ? TextInputType.multiline : _keyboardType,
             obscureText: obscureText,
             enabled: enabled,
             maxLength: maxLength,
-            maxLines: 1,
-            minLines: 1,
-            expands: false,
+            maxLines: isMultiline ? null : 1,
+            minLines: isMultiline ? null : 1,
+            expands: isMultiline && height != null,
             textAlign: centerContent ? TextAlign.center : TextAlign.start,
+            textAlignVertical: isMultiline ? TextAlignVertical.top : TextAlignVertical.center,
             textCapitalization: _textCapitalization,
             inputFormatters: _inputFormatters,
             onChanged: onChanged,
@@ -149,6 +152,9 @@ class CustomTextField extends StatelessWidget {
               suffixIcon: suffixIcon,
               filled: bgColor != null,
               fillColor: bgColor,
+              contentPadding: isMultiline 
+                  ? const EdgeInsets.symmetric(horizontal: 12, vertical: 12)
+                  : null,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
               ),

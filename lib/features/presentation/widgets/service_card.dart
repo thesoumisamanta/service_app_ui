@@ -38,8 +38,8 @@ class ServiceCard extends StatelessWidget {
                   Text(
                     title,
                     style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w700,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
                       color: AppColors.darkText,
                       height: 1.2,
                     ),
@@ -60,7 +60,7 @@ class ServiceCard extends StatelessWidget {
                       Text(
                         price.toString(),
                         style: const TextStyle(
-                          fontSize: 14,
+                          fontSize: 16,
                           fontWeight: FontWeight.w600,
                           color: AppColors.lightText,
                         ),
@@ -73,7 +73,7 @@ class ServiceCard extends StatelessWidget {
                     height: 30,
                     width: 110,
                     borderRadius: 10,
-                    fontSize: 14,
+                    fontSize: 16,
                     onPressed: () {},
                     gradient: AppStyles.gradientBg,
                   ),

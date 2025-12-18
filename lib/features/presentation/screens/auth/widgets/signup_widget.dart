@@ -24,7 +24,7 @@ class _SignupWidgetState extends State<SignupWidget> {
         CustomTextField(
           label: 'Name',
           hint: 'Enter your name',
-          height: 47,
+          height: 45,
           type: TextFieldType.name,
           // controller: _nameController,
         ),
@@ -32,7 +32,7 @@ class _SignupWidgetState extends State<SignupWidget> {
         CustomTextField(
           label: 'Email',
           hint: 'Enter your email',
-          height: 47,
+          height: 45,
           type: TextFieldType.name,
           validator: (value) {
             if (value == null || value.isEmpty) {
@@ -48,7 +48,7 @@ class _SignupWidgetState extends State<SignupWidget> {
         CustomTextField(
           label: 'Phone',
           hint: 'Enter your phone number',
-          height: 47,
+          height: 45,
           type: TextFieldType.phone,
           // controller: _phoneController,
         ),
@@ -57,7 +57,7 @@ class _SignupWidgetState extends State<SignupWidget> {
           label: 'Password',
           hint: 'Enter your password',
           type: TextFieldType.password,
-          height: 47,
+          height: 45,
           obscureText: isPasswordHidden,
           suffixIcon: GestureDetector(
             onTap: () {
@@ -92,7 +92,7 @@ class _SignupWidgetState extends State<SignupWidget> {
         CustomTextField(
           label: 'Password',
           hint: 'Enter your password',
-          height: 47,
+          height: 45,
           type: TextFieldType.password,
           obscureText: isPasswordHidden,
           suffixIcon: GestureDetector(

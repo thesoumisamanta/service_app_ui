@@ -37,7 +37,7 @@ class ServiceWidget extends StatelessWidget {
           Text(
             'Looking for Services',
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 22,
               fontWeight: FontWeight.w400,
               color: AppColors.grey4,
             ),

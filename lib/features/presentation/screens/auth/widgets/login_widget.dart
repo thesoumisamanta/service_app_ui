@@ -26,7 +26,7 @@ class _LoginWidgetState extends State<LoginWidget> {
         CustomTextField(
           label: 'Email',
           hint: 'Enter your email',
-          height: 47,
+          height: 45,
           type: TextFieldType.name,
           validator: (value) {
             if (value == null || value.isEmpty) {
@@ -58,10 +58,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                 isPasswordHidden
                     ? 'assets/icons/eye_off.svg'
                     : 'assets/icons/eye.svg',
-                    colorFilter: const ColorFilter.mode(
-                      AppColors.grey2,
-                      BlendMode.srcIn,
-                    ),
+                colorFilter: const ColorFilter.mode(
+                  AppColors.grey2,
+                  BlendMode.srcIn,
+                ),
               ),
             ),
           ),

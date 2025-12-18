@@ -70,6 +70,9 @@ class BottomBar extends StatelessWidget {
           if (index == 2) {
             Navigator.pushNamed(context, '/create-job');
           }
+          if (index == 0) {
+            Navigator.pushNamed(context, '/home');
+          }
         },
         child: SizedBox(width: 40, height: 40, child: icon),
       ),
