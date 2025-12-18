@@ -67,7 +67,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     children: [
                       CarouselSlider(
-                        maxHeight: 130,
+                        maxHeight: 160,
+                        minHeight: 130,
                         itemSpacing: 5,
                         viewportFraction: 0.92,
                         items: List.generate(3, (index) => CarouselItem()),

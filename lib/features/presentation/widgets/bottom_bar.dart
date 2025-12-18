@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:service_app_ui/core/constants/app_styles.dart';
+import 'package:service_app_ui/main.dart';
 
 class BottomBar extends StatelessWidget {
   const BottomBar({super.key});
@@ -15,7 +16,7 @@ class BottomBar extends StatelessWidget {
           decoration: BoxDecoration(
             gradient: AppStyles.gradientBg,
             borderRadius: BorderRadius.circular(25),
-            boxShadow: AppStyles.customBoxShadow
+            boxShadow: AppStyles.customBoxShadow,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -66,11 +67,13 @@ class BottomBar extends StatelessWidget {
     return Builder(
       builder: (context) => GestureDetector(
         onTap: () {
-          if (index == 2) {
-            Navigator.pushNamed(context, '/create-job');
+          final currentRoute = ModalRoute.of(context)?.settings.name;
+
+          if (index == 2 && currentRoute != '/create-job') {
+            navigatorKey.currentState?.pushReplacementNamed('/create-job');
           }
-          if (index == 0) {
-            Navigator.pushNamed(context, '/home');
+          if (index == 0 && currentRoute != '/home') {
+            navigatorKey.currentState?.pushReplacementNamed('/home');
           }
         },
         child: SizedBox(width: 40, height: 40, child: icon),

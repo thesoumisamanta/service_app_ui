@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:service_app_ui/core/constants/app_colors.dart';
 import 'package:service_app_ui/core/constants/app_styles.dart';
 import 'package:service_app_ui/core/helpers/white_status_bar.dart';
-import 'package:service_app_ui/core/routes/app_routes.dart';
 import 'package:service_app_ui/features/presentation/widgets/bottom_bar.dart';
 import 'package:service_app_ui/features/presentation/widgets/custom_button.dart';
 import 'package:service_app_ui/features/presentation/widgets/custom_text_field.dart';
@@ -189,12 +188,7 @@ class CreateJobScreen extends StatelessWidget {
                                   const SizedBox(height: 32),
                                   CustomButton(
                                     text: 'Next',
-                                    onPressed: () {
-                                      Navigator.pushNamed(
-                                        context,
-                                        AppRoutes.service,
-                                      );
-                                    },
+                                    onPressed: () {},
                                     gradient: AppStyles.gradientBg,
                                   ),
                                   const SizedBox(height: 32),
