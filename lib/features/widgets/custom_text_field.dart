@@ -4,7 +4,7 @@ import 'package:service_app_ui/core/constants/app_colors.dart';
 
 enum TextFieldType { text, name, email, password, phone }
 
-class CustomTextField extends StatefulWidget {
+class CustomTextField extends StatelessWidget {
   final String? label;
   final String? hint;
   final TextFieldType type;
@@ -13,8 +13,10 @@ class CustomTextField extends StatefulWidget {
   final void Function(String)? onChanged;
   final bool enabled;
   final Widget? prefixIcon;
+  final Widget? suffixIcon;
   final int? maxLength;
   final int maxLines;
+  final bool obscureText;
 
   const CustomTextField({
     super.key,
@@ -26,19 +28,14 @@ class CustomTextField extends StatefulWidget {
     this.onChanged,
     this.enabled = true,
     this.prefixIcon,
+    this.suffixIcon,
     this.maxLength,
     this.maxLines = 1,
+    this.obscureText = false,
   });
 
-  @override
-  State<CustomTextField> createState() => _CustomTextFieldState();
-}
-
-class _CustomTextFieldState extends State<CustomTextField> {
-  final bool _obscureText = true;
-
   TextInputType get _keyboardType {
-    switch (widget.type) {
+    switch (type) {
       case TextFieldType.email:
         return TextInputType.emailAddress;
       case TextFieldType.phone:
@@ -51,24 +48,25 @@ class _CustomTextFieldState extends State<CustomTextField> {
   }
 
   List<TextInputFormatter> get _inputFormatters {
-    switch (widget.type) {
+    switch (type) {
       case TextFieldType.phone:
         return [
           FilteringTextInputFormatter.digitsOnly,
           LengthLimitingTextInputFormatter(10),
         ];
       case TextFieldType.name:
-        return [FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z\s]'))];
+        return [
+          FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z\s]')),
+        ];
       default:
         return [];
     }
   }
 
   TextCapitalization get _textCapitalization {
-    if (widget.type == TextFieldType.name) {
-      return TextCapitalization.words;
-    }
-    return TextCapitalization.none;
+    return type == TextFieldType.name
+        ? TextCapitalization.words
+        : TextCapitalization.none;
   }
 
   @override
@@ -76,11 +74,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (widget.label != null)
+        if (label != null)
           Padding(
             padding: const EdgeInsets.only(bottom: 4),
             child: Text(
-              widget.label!,
+              label!,
               style: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
@@ -89,28 +87,31 @@ class _CustomTextFieldState extends State<CustomTextField> {
             ),
           ),
         TextFormField(
-          // controller: widget.controller,
+          controller: controller,
           keyboardType: _keyboardType,
-          obscureText: widget.type == TextFieldType.password && _obscureText,
-          enabled: widget.enabled,
-          maxLength: widget.maxLength,
-          maxLines: widget.maxLines,
+          obscureText: obscureText,
+          enabled: enabled,
+          maxLength: maxLength,
+          maxLines: maxLines,
           textCapitalization: _textCapitalization,
           inputFormatters: _inputFormatters,
-          onChanged: widget.onChanged,
-          validator: widget.validator,
+          onChanged: onChanged,
+          validator: validator,
           decoration: InputDecoration(
-            hintText: widget.hint,
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+            hintText: hint,
+            prefixIcon: prefixIcon,
+            suffixIcon: suffixIcon,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(color: AppColors.grey, width: 1),
+              borderSide: BorderSide(color: AppColors.grey),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: const BorderSide(
                 color: AppColors.primaryBlue,
-                width: 1,
               ),
             ),
           ),
@@ -119,3 +120,4 @@ class _CustomTextFieldState extends State<CustomTextField> {
     );
   }
 }
+

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:service_app_ui/core/constants/app_colors.dart';
 import 'package:service_app_ui/features/widgets/custom_button.dart';
 import 'package:service_app_ui/features/widgets/custom_check_box.dart';
@@ -13,6 +14,7 @@ class SignupWidget extends StatefulWidget {
 
 class _SignupWidgetState extends State<SignupWidget> {
   bool isChecked = false;
+  bool isPasswordHidden = true;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -50,6 +52,26 @@ class _SignupWidgetState extends State<SignupWidget> {
           label: 'Password',
           hint: 'Enter your password',
           type: TextFieldType.password,
+          obscureText: isPasswordHidden,
+          suffixIcon: GestureDetector(
+            onTap: () {
+              setState(() {
+                isPasswordHidden = !isPasswordHidden;
+              });
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: SvgPicture.asset(
+                isPasswordHidden
+                    ? 'assets/icons/eye.svg'
+                    : 'assets/icons/eye_off.svg',
+                colorFilter: const ColorFilter.mode(
+                  AppColors.grey2,
+                  BlendMode.srcIn,
+                ),
+              ),
+            ),
+          ),
           validator: (value) {
             if (value == null || value.isEmpty) {
               return 'Please enter your password';
@@ -62,9 +84,29 @@ class _SignupWidgetState extends State<SignupWidget> {
         ),
         const SizedBox(height: 12),
         CustomTextField(
-          label: 'Confirm Password',
-          hint: 'Confirm your password',
+          label: 'Password',
+          hint: 'Enter your password',
           type: TextFieldType.password,
+          obscureText: isPasswordHidden,
+          suffixIcon: GestureDetector(
+            onTap: () {
+              setState(() {
+                isPasswordHidden = !isPasswordHidden;
+              });
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: SvgPicture.asset(
+                isPasswordHidden
+                    ? 'assets/icons/eye.svg'
+                    : 'assets/icons/eye_off.svg',
+                colorFilter: const ColorFilter.mode(
+                  AppColors.grey2,
+                  BlendMode.srcIn,
+                ),
+              ),
+            ),
+          ),
           validator: (value) {
             if (value == null || value.isEmpty) {
               return 'Please enter your password';
@@ -80,12 +122,16 @@ class _SignupWidgetState extends State<SignupWidget> {
           alignment: Alignment.centerLeft,
           child: CustomCheckbox(
             value: isChecked,
+            borderColor: AppColors.primaryBlue,
             onChanged: (newValue) {
               setState(() {
                 isChecked = newValue;
               });
             },
             text: 'Terms & Conditions',
+            textColor: AppColors.primaryBlue,
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
           ),
         ),
         const SizedBox(height: 24),

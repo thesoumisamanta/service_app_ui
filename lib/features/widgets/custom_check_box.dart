@@ -8,6 +8,8 @@ class CustomCheckbox extends StatelessWidget {
   final Color? checkboxColor;
   final Color? textColor;
   final double? fontSize;
+  final Color? borderColor;
+  final FontWeight? fontWeight;
 
   const CustomCheckbox({
     super.key,
@@ -17,6 +19,8 @@ class CustomCheckbox extends StatelessWidget {
     this.checkboxColor,
     this.textColor,
     this.fontSize,
+    this.borderColor,
+    this.fontWeight,
   });
 
   @override
@@ -27,16 +31,16 @@ class CustomCheckbox extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           SizedBox(
-            width: 24,
-            height: 24,
+            width: 20,
+            height: 20,
             child: Checkbox(
               value: value,
               onChanged: (newValue) => onChanged(newValue ?? false),
               activeColor: checkboxColor ?? AppColors.primaryBlue,
               checkColor: AppColors.white,
-              side: const BorderSide(
-                color: AppColors.darkGrey, 
-                width: 1.5,
+              side: BorderSide(
+                color: borderColor ?? AppColors.darkGrey,
+                width: 2,
               ),
             ),
           ),
@@ -45,7 +49,8 @@ class CustomCheckbox extends StatelessWidget {
             text,
             style: TextStyle(
               color: textColor ?? Colors.black87,
-              fontSize: fontSize ?? 14,
+              fontSize: fontSize ?? 12,
+              fontWeight: fontWeight ?? FontWeight.w500,
             ),
           ),
         ],

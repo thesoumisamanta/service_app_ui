@@ -15,95 +15,117 @@ class LoginWidget extends StatefulWidget {
 
 class _LoginWidgetState extends State<LoginWidget> {
   bool isChecked = false;
+  bool isPasswordHidden = true;
+
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CustomTextField(
-            label: 'Email',
-            hint: 'Enter your email',
-            type: TextFieldType.name,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter your email';
-              }
-              if (!RegExp(
-                r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
-              ).hasMatch(value)) {
-                return 'Please enter a valid email';
-              }
-              return null;
+      children: [
+        CustomTextField(
+          label: 'Email',
+          hint: 'Enter your email',
+          type: TextFieldType.name,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Please enter your email';
+            }
+            if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
+              return 'Please enter a valid email';
+            }
+            return null;
+          },
+        ),
+        const SizedBox(height: 16),
+        CustomTextField(
+          label: 'Password',
+          hint: 'Enter your password',
+          type: TextFieldType.password,
+          obscureText: isPasswordHidden,
+          suffixIcon: GestureDetector(
+            onTap: () {
+              setState(() {
+                isPasswordHidden = !isPasswordHidden;
+              });
             },
-          ),
-          const SizedBox(height: 16),
-          CustomTextField(
-            label: 'Password',
-            hint: 'Enter your password',
-            type: TextFieldType.password,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter your password';
-              }
-              if (value.length < 6) {
-                return 'Password must be at least 6 characters';
-              }
-              return null;
-            },
-          ),
-          const SizedBox(height: 16),
-          Row(
-            children: [
-              CustomCheckbox(
-                value: isChecked,
-                onChanged: (newValue) {
-                  setState(() {
-                    isChecked = newValue;
-                  });
-                },
-                text: 'Remember Me',
+            child: Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: SvgPicture.asset(
+                isPasswordHidden
+                    ? 'assets/icons/eye.svg'
+                    : 'assets/icons/eye_off.svg',
+                    colorFilter: const ColorFilter.mode(
+                      AppColors.grey2,
+                      BlendMode.srcIn,
+                    ),
               ),
-              const Spacer(),
-              Text(
-                'Forgot Password?',
-                style: TextStyle(
-                  color: AppColors.primaryBlue.withValues(alpha: 0.9),
-                  fontWeight: FontWeight.w600,
-                ),
+            ),
+          ),
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Please enter your password';
+            }
+            if (value.length < 6) {
+              return 'Password must be at least 6 characters';
+            }
+            return null;
+          },
+        ),
+
+        const SizedBox(height: 16),
+        Row(
+          children: [
+            CustomCheckbox(
+              value: isChecked,
+              onChanged: (newValue) {
+                setState(() {
+                  isChecked = newValue;
+                });
+              },
+              text: 'Remember Me',
+            ),
+            const Spacer(),
+            Text(
+              'Forgot Password?',
+              style: TextStyle(
+                color: AppColors.primaryBlue.withValues(alpha: 0.9),
+                fontWeight: FontWeight.w600,
+                fontSize: 12,
               ),
-            ],
-          ),
-          const SizedBox(height: 24),
-          CustomButton(
-            text: 'Log In',
-            onPressed: () {},
-            gradient: const LinearGradient(
-              colors: [AppColors.primaryBlue, AppColors.primaryPurple],
             ),
+          ],
+        ),
+        const SizedBox(height: 24),
+        CustomButton(
+          text: 'Log In',
+          onPressed: () {},
+          gradient: const LinearGradient(
+            colors: [AppColors.primaryBlue, AppColors.primaryPurple],
           ),
-          const SizedBox(height: 16),
-          OrDivider(),
-          const SizedBox(height: 16),
-          CustomButton(
-            text: 'Continue with Google',
-            onPressed: () {},
-            prefixIcon: SvgPicture.asset(
-              'assets/icons/google.svg',
-              width: 20,
-              height: 20,
-            ),
+        ),
+        const SizedBox(height: 16),
+        OrDivider(),
+        const SizedBox(height: 16),
+        CustomButton(
+          text: 'Continue with Google',
+          onPressed: () {},
+          prefixIcon: SvgPicture.asset(
+            'assets/icons/google.svg',
+            width: 20,
+            height: 20,
           ),
-          const SizedBox(height: 16),
-          CustomButton(
-            text: 'Continue with Facebook',
-            onPressed: () {},
-            prefixIcon: SvgPicture.asset(
-              'assets/icons/facebook.svg',
-              width: 20,
-              height: 20,
-            ),
+        ),
+        const SizedBox(height: 16),
+        CustomButton(
+          text: 'Continue with Facebook',
+          onPressed: () {},
+          prefixIcon: SvgPicture.asset(
+            'assets/icons/facebook.svg',
+            width: 20,
+            height: 20,
           ),
-        ],
+        ),
+      ],
     );
   }
 }
