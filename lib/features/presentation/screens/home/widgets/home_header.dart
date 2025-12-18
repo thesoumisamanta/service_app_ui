@@ -45,11 +45,67 @@ class HomeHeader extends StatelessWidget {
           const SizedBox(width: 10),
           SvgPicture.asset('assets/icons/coin.svg', width: 22, height: 22),
           const SizedBox(width: 10),
-          SvgPicture.asset('assets/icons/cart.svg', width: 23, height: 23),
+          _buildIconWithBadge(
+            iconPath: 'assets/icons/cart.svg',
+            width: 23,
+            height: 23,
+            badgeText: '1',
+          ),
           const SizedBox(width: 10),
-          SvgPicture.asset('assets/icons/bell.svg', width: 22, height: 22),
+          _buildIconWithBadge(
+            iconPath: 'assets/icons/bell.svg',
+            width: 22,
+            height: 22,
+            showDot: true,
+          ),
         ],
       ),
+    );
+  }
+
+  Widget _buildIconWithBadge({
+    required String iconPath,
+    required double width,
+    required double height,
+    String? badgeText,
+    bool showDot = false,
+  }) {
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        SvgPicture.asset(
+          iconPath,
+          width: width,
+          height: height,
+        ),
+        Positioned(
+          right: badgeText != null ? -8 : -2,
+          top: badgeText != null ? 0 : -4,
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.red,
+              shape: BoxShape.circle,
+            ),
+            constraints: const BoxConstraints(
+              minWidth: 12,
+              minHeight: 12,
+            ),
+            child: badgeText != null
+                ? Center(
+                    child: Text(
+                      badgeText,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 6,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  )
+                : null,
+          ),
+        ),
+      ],
     );
   }
 }

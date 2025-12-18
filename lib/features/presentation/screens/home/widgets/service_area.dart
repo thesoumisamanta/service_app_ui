@@ -20,7 +20,7 @@ class ServiceArea extends StatelessWidget {
                 'Service',
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 14,
+                  fontSize: 16,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -32,14 +32,14 @@ class ServiceArea extends StatelessWidget {
                   'View All',
                   style: TextStyle(
                     color: AppColors.primaryBlue,
-                    fontSize: 14,
+                    fontSize: 16,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 15),
+          const SizedBox(height: 15), 
           GridView.count(
             padding: EdgeInsets.zero,
             crossAxisCount: 3,

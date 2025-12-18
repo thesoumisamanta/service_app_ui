@@ -96,8 +96,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 'Categories',
                                 style: TextStyle(
                                   color: AppColors.black,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
                                 ),
                               ),
                             ),
