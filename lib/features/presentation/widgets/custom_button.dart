@@ -10,6 +10,8 @@ class CustomButton extends StatelessWidget {
   final double borderRadius;
   final double? width;
   final Widget? prefixIcon;
+  final Widget? suffixIcon;
+  final double? fontSize;
 
   const CustomButton({
     super.key,
@@ -21,6 +23,8 @@ class CustomButton extends StatelessWidget {
     this.borderRadius = 14,
     this.width,
     this.prefixIcon,
+    this.suffixIcon,
+    this.fontSize,
   });
 
   @override
@@ -53,7 +57,7 @@ class CustomButton extends StatelessWidget {
                     )
                   : Row(
                       mainAxisSize: MainAxisSize.min,
-                      children: [
+                        children: [
                         if (prefixIcon != null) ...[
                           prefixIcon!,
                           const SizedBox(width: 8),
@@ -61,15 +65,17 @@ class CustomButton extends StatelessWidget {
                         Text(
                           text,
                           style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: hasGradient
-                                ? Colors.white
-                                : (isDisabled
-                                      ? Colors.grey.shade400
-                                      : Colors.black),
+                          fontSize: fontSize ?? 16,
+                          fontWeight: FontWeight.w600,
+                          color: hasGradient
+                            ? AppColors.white
+                            : AppColors.darkText,
                           ),
                         ),
+                        if (suffixIcon != null) ...[
+                          const SizedBox(width: 8),
+                          suffixIcon!,
+                        ],
                       ],
                     ),
             ),

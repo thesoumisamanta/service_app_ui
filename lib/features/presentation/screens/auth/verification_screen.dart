@@ -110,7 +110,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                       onPressed: () {
                         Navigator.pushReplacementNamed(
                           context,
-                          AppRoutes.createJob,
+                          AppRoutes.home,
                         );
                       },
                       gradient: const LinearGradient(

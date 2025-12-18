@@ -23,6 +23,8 @@ class CustomTextField extends StatelessWidget {
   final bool isRequired;
   final Color? borderColor;
   final double? height;
+  final Color? bgColor;
+  final bool centerContent;
 
   const CustomTextField({
     super.key,
@@ -43,7 +45,9 @@ class CustomTextField extends StatelessWidget {
     this.isRequired = false,
     this.borderColor,
     this.height,
-    this.fontWeight
+    this.fontWeight,
+    this.bgColor,
+    this.centerContent = false,
   });
 
   TextInputType get _keyboardType {
@@ -127,16 +131,21 @@ class CustomTextField extends StatelessWidget {
             maxLines: height != null ? null : maxLines,
             minLines: height != null ? null : 1,
             expands: height != null,
-            textAlignVertical: height != null ? TextAlignVertical.top : TextAlignVertical.center,
+            textAlign: centerContent ? TextAlign.center : TextAlign.start,
             textCapitalization: _textCapitalization,
             inputFormatters: _inputFormatters,
             onChanged: onChanged,
             validator: validator,
             decoration: InputDecoration(
               hintText: hint,
+              hintStyle: const TextStyle(color: AppColors.grey4, fontSize: 14),
               prefixIcon: prefixIcon,
               suffixIcon: suffixIcon,
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+              filled: bgColor != null,
+              fillColor: bgColor,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
                 borderSide: BorderSide(color: borderColor ?? AppColors.grey),
