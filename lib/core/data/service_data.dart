@@ -33,3 +33,31 @@ const List<Map<String, dynamic>> categoryList = [
     'phone': '+1 234 567 894',
   },
 ];
+
+const List<Map<String, dynamic>> jobServicesData = [
+  {
+    'title': 'General Contracting',
+    'price': 2000,
+    'imagePath': 'assets/images/general_contracting.jpg',
+  },
+  {
+    'title': 'Kitchen Remodel',
+    'price': 2000,
+    'imagePath': 'assets/images/kitchen_remodel.jpg',
+  },
+  {
+    'title': 'Bathroom Remodel',
+    'price': 2000,
+    'imagePath': 'assets/images/bathroom_remodel.jpg',
+  },
+  {
+    'title': 'Home_additions',
+    'price': 2000,
+    'imagePath': 'assets/images/home_additions.jpg',
+  },
+  {
+    'title': 'Interior Design',
+    'price': 2000,
+    'imagePath': 'assets/images/interior_design.jpeg',
+  },
+];
