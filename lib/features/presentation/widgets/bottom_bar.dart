@@ -70,10 +70,10 @@ class BottomBar extends StatelessWidget {
           final currentRoute = ModalRoute.of(context)?.settings.name;
 
           if (index == 2 && currentRoute != '/create-job') {
-            navigatorKey.currentState?.pushReplacementNamed('/create-job');
+            navigatorKey.currentState?.pushNamed('/create-job');
           }
           if (index == 0 && currentRoute != '/home') {
-            navigatorKey.currentState?.pushReplacementNamed('/home');
+            navigatorKey.currentState?.pushNamed('/home');
           }
         },
         child: SizedBox(width: 40, height: 40, child: icon),

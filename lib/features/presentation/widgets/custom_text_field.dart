@@ -89,8 +89,9 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isMultiline = !obscureText && (height != null && height! > 60 || maxLines > 1);
-    
+    final isMultiline =
+        !obscureText && (height != null && height! > 60 || maxLines > 1);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -140,21 +141,26 @@ class CustomTextField extends StatelessWidget {
             minLines: isMultiline ? null : 1,
             expands: isMultiline && height != null,
             textAlign: centerContent ? TextAlign.center : TextAlign.start,
-            textAlignVertical: isMultiline ? TextAlignVertical.top : TextAlignVertical.center,
+            textAlignVertical: isMultiline
+                ? TextAlignVertical.top
+                : TextAlignVertical.center,
             textCapitalization: _textCapitalization,
             inputFormatters: _inputFormatters,
             onChanged: onChanged,
             validator: validator,
             decoration: InputDecoration(
               hintText: hint,
-              hintStyle: TextStyle(color: AppColors.grey4, fontSize: hintFontSize ?? 14),
+              hintStyle: TextStyle(
+                color: AppColors.grey4,
+                fontSize: hintFontSize ?? 14,
+              ),
               prefixIcon: prefixIcon,
               suffixIcon: suffixIcon,
               filled: bgColor != null,
               fillColor: bgColor,
-              contentPadding: isMultiline 
+              contentPadding: isMultiline
                   ? const EdgeInsets.symmetric(horizontal: 12, vertical: 12)
-                  : null,
+                  : const EdgeInsets.symmetric(horizontal: 12, vertical: 0),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
@@ -164,7 +170,9 @@ class CustomTextField extends StatelessWidget {
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide(color: focusedBorderColor ?? AppColors.primaryBlue),
+                borderSide: BorderSide(
+                  color: focusedBorderColor ?? AppColors.primaryBlue,
+                ),
               ),
             ),
           ),
