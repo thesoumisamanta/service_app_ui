@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:service_app_ui/core/constants/app_colors.dart';
 import 'package:service_app_ui/core/helpers/white_status_bar.dart';
 import 'package:service_app_ui/core/routes/app_routes.dart';
-import 'package:service_app_ui/features/widgets/double_option_button.dart';
+import 'package:service_app_ui/features/presentation/widgets/double_option_button.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -128,7 +128,7 @@ class _SplashScreenState extends State<SplashScreen>
                                   ..onTap = () {
                                     Navigator.pushReplacementNamed(
                                       context,
-                                      AppRoutes.login,
+                                      AppRoutes.auth,
                                     );
                                   },
                               ),

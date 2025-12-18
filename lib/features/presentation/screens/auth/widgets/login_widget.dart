@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:service_app_ui/core/constants/app_colors.dart';
-import 'package:service_app_ui/features/widgets/custom_button.dart';
-import 'package:service_app_ui/features/widgets/custom_check_box.dart';
-import 'package:service_app_ui/features/widgets/custom_text_field.dart';
-import 'package:service_app_ui/features/widgets/or_divider.dart';
+import 'package:service_app_ui/features/presentation/widgets/custom_button.dart';
+import 'package:service_app_ui/features/presentation/widgets/custom_check_box.dart';
+import 'package:service_app_ui/features/presentation/widgets/custom_text_field.dart';
+import 'package:service_app_ui/features/presentation/widgets/or_divider.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({super.key});
